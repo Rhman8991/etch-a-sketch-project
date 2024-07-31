@@ -44,5 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const items = document.querySelectorAll(".item");
         items.forEach(element => element.classList.toggle("borderOn"))
     }
-
+    
+    let isDrawing = false;
+    const draw = (e) => {
+        if (e.target.classList.contains("item")) {
+            e.target.classList.add("paint");
+        }
+    }
+    pad.addEventListener("mousedown", e => {
+        isDrawing = true;
+        draw(e)
+    })
+    pad.addEventListener("mousemove", e => {
+        if (isDrawing) {
+            draw(e)
+        }
+    })
+    pad.addEventListener("mouseup", () => isDrawing = false)
+    pad.addEventListener("mouseleave", () => isDrawing = false)
 })
