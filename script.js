@@ -27,10 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gridSizeChangeBtn.addEventListener("click", () => {
         const userInput = prompt("The default grid size is 16 x 16 \n Enter value between 1 to 100 to change grid size!");
-        if (Number(userInput) < 1 || Number(userInput) > 100) {
+        if (userInput === null || userInput === "") {
+            return;
+        } else if (Number(userInput) < 1 || Number(userInput) > 100) {
             alert("The grid size should between 1 to 100!");
         } else {
-            makeGrid(Number(userInput))
+            makeGrid(Number(userInput));
         }    
     })
 
