@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pad.style.height = `${padSize}px`;
 
     const gridSizeChangeBtn = document.getElementById("gridSizeChangeBtn");
+    const gridCheckbox = document.getElementById("gridChkbx");
 
     function makeGrid(size = 16) {
         pad.innerHTML = "";
@@ -27,11 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
     gridSizeChangeBtn.addEventListener("click", () => {
         const userInput = prompt("The default grid size is 16 x 16 \n Enter value between 1 to 100 to change grid size!");
         if (Number(userInput) < 1 || Number(userInput) > 100) {
-            alert("The grid size should between 1 to 100!")
-        }
-        makeGrid(Number(userInput))
+            alert("The grid size should between 1 to 100!");
+        } else {
+            makeGrid(Number(userInput))
+        }    
     })
 
     makeGrid()
+
+    gridCheckbox.addEventListener("change", hideGrid)
+
+    function hideGrid() {
+        const items = document.querySelectorAll(".item");
+        items.forEach(element => element.classList.toggle("borderOn"))
+    }
 
 })
