@@ -7,9 +7,22 @@
     </head>
     <body>
         <div id="app">
-            <div id="header">
-                <h1>Sketchpad</h1>
-                <button id="gridSizeChangeBtn">Change grid size</button>
+            <div class="left">
+                <div id="header">
+                    <h1>Sketchpad</h1>
+                </div>
+                <div class="option">
+                    <button id="gridSizeChangeBtn">Change grid size</button>
+                    <div><input type="checkbox" id="gridChkbx"><label for="gridChkbx">Hide grid</label></div>
+                    <div>
+                    <div>
+                            <input type="color" id="colorPick"><label for="colorPick">Color</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="randomChkbx"><label for="randomChkbx">Random Color</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="pad-container">
                 <div id="pad"></div>
