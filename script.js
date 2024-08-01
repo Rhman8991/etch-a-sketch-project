@@ -44,13 +44,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const items = document.querySelectorAll(".item");
         items.forEach(element => element.classList.toggle("borderOn"))
     }
+
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * letters.length)];
+        }
+        return color;
+    }
     
     let isDrawing = false;
+    const color = document.getElementById("colorPick");
+    const randomCheckbox = document.getElementById("randomChkbx");
     const draw = (e) => {
         if (e.target.classList.contains("item")) {
-            e.target.classList.add("paint");
+            if (randomCheckbox.checked === true) {
+                e.target.style.backgroundColor = getRandomColor();
+            } else {
+                e.target.style.backgroundColor = color.value;
+            }
         }
     }
+
     pad.addEventListener("mousedown", e => {
         isDrawing = true;
         draw(e)
@@ -62,4 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     pad.addEventListener("mouseup", () => isDrawing = false)
     pad.addEventListener("mouseleave", () => isDrawing = false)
+    
 })
